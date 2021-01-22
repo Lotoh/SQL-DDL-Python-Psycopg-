@@ -2,8 +2,8 @@ import psycopg2
 import sys
 
 def getConn():
-    connStr = "host='localhost' \
-               dbname= 'postgres' user='postgres' password = '12345'"
+    connStr = "host='' \
+               dbname= '' user='' password = ''"
     conn=psycopg2.connect(connStr)      
     return  conn
 
