@@ -1,0 +1,166 @@
+CREATE SCHEMA pirean;
+SET search_path TO pirean,PUBLIC;
+
+CREATE TABLE event (
+    ecode        CHAR(4) UNIQUE PRIMARY KEY,
+    edesc        VARCHAR(20) NOT NULL,
+    elocation    VARCHAR(20) NOT NULL,
+    edate        DATE CHECK(edate>='2019-04-01' AND edate<='2019-04-30') NOT NULL,
+    etime        TIME CHECK(etime >= '09:00:00') NOT NULL,
+    emax         SMALLINT CHECK(emax >= 1 AND emax <= 1000) NOT NULL);
+
+CREATE TABLE spectator (
+    sno          INTEGER UNIQUE PRIMARY KEY,
+    sname        VARCHAR(20) NOT NULL,
+    semail       VARCHAR(20) CHECK (semail LIKE '%_@_%') NOT NULL);
+
+CREATE TABLE ticket (
+    tno          INTEGER UNIQUE PRIMARY KEY,
+    ecode        CHAR(4),
+    sno          INTEGER,
+	CONSTRAINT ticket_fk1 FOREIGN KEY (ecode) REFERENCES event ON UPDATE CASCADE ON DELETE SET NULL,
+	CONSTRAINT ticket_fk2 FOREIGN KEY (sno) REFERENCES spectator ON UPDATE CASCADE ON DELETE SET NULL,
+	CONSTRAINT ticket_restrict UNIQUE (ecode, sno));
+	
+	
+
+CREATE TABLE cancel (
+    tno          INTEGER UNIQUE NOT NULL,
+    ecode        CHAR(4) NOT NULL,
+    sno          INTEGER,
+    cdate        TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+    cuser        VARCHAR(128) NOT NULL DEFAULT CURRENT_USER, 
+	CONSTRAINT cancel_fk3 FOREIGN KEY (sno) REFERENCES spectator ON UPDATE CASCADE ON DELETE SET NULL,
+	CONSTRAINT cancel_pk PRIMARY KEY (tno, cdate));
+
+
+--------VVV---Prevent spectator delete if valid tickets held---VVV--------------
+
+CREATE VIEW ticketcheck as
+SELECT s.sno, t.ecode, CASE WHEN t.tno = c.tno THEN 'cancelled' ELSE 'active' END as status
+FROM ticket as t
+LEFT JOIN spectator as s on t.sno = s.sno 
+LEFT join cancel as c on t.tno = c.tno;
+
+CREATE OR REPLACE FUNCTION check_for_tickets()
+RETURNS TRIGGER AS $$
+BEGIN 
+IF EXISTS (select * from ticketcheck WHERE sno = OLD.sno AND status = 'active')
+	THEN RAISE EXCEPTION 'C. Cannot delete spectator with valid tickets';
+END IF;
+RETURN OLD;
+end $$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER spectator_delete_check BEFORE DELETE on spectator
+FOR EACH row
+execute procedure
+check_for_tickets();
+
+
+--------VVV---Enforce emax---VVV--------------
+
+
+CREATE VIEW emax AS
+SELECT event.ecode, cancel.ecode as cancelled_ecode, event.emax, COUNT(ticket.tno) AS Tickets_Issued, COUNT(cancel.tno) as Tickets_Cancelled, 
+CASE WHEN emax = (COUNT(ticket.tno))-(COUNT(cancel.tno)) THEN 'full' ELSE 'available' END as status
+FROM event 
+FULL JOIN ticket ON ticket.ecode = event.ecode
+LEFT JOIN cancel on cancel.tno = ticket.tno
+GROUP BY event.ecode, cancel.ecode;
+
+CREATE OR REPLACE FUNCTION enforce_emax()
+RETURNS TRIGGER AS $$
+BEGIN 
+IF EXISTS (select * from emax WHERE ecode = NEW.ecode AND status = 'full')
+	THEN RAISE EXCEPTION 'E. Event sold out. Ticket not issued';
+END IF;
+RETURN NEW;
+end $$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER sold_out BEFORE INSERT on ticket
+FOR EACH row
+execute procedure
+enforce_emax();
+
+
+--------VVV---Catch Dupe ecode---VVV--------------
+
+CREATE OR REPLACE FUNCTION dupe_event()
+RETURNS TRIGGER AS $$
+BEGIN 
+IF EXISTS (select * from event WHERE ecode = NEW.ecode)
+	THEN RAISE EXCEPTION 'B. ecode already exists. Event not created';
+END IF;
+RETURN NEW;
+end $$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER dupe_event_trigger BEFORE INSERT on event
+FOR EACH row
+execute procedure
+dupe_event();
+
+--------VVV---Catch invalid edate---VVV--------------
+
+CREATE OR REPLACE FUNCTION event_date()
+RETURNS TRIGGER AS $$
+BEGIN 
+IF NEW.edate<='2019-04-01' OR NEW.edate>='2019-04-30'
+	THEN RAISE EXCEPTION 'B. Invalid event date. Event not created';
+END IF;
+RETURN NEW;
+end $$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER event_date_trigger BEFORE INSERT on event
+FOR EACH row
+execute procedure
+event_date();
+
+
+--------VVV---Catch dupe tno---VVV--------------
+
+CREATE OR REPLACE FUNCTION ticket_dupe()
+RETURNS TRIGGER AS $$
+BEGIN 
+IF EXISTS (SELECT * FROM ticket WHERE NEW.tno = tno)
+	THEN RAISE EXCEPTION 'E. Ticket number already exists. Ticket not issued';
+END IF;
+RETURN NEW;
+end $$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER ticket_dupe_trigger BEFORE INSERT on ticket
+FOR EACH row
+execute procedure
+ticket_dupe();
+
+
+
+--------VVV---No spectator on insert ticket---VVV--------------
+
+CREATE OR REPLACE FUNCTION no_spec()
+RETURNS TRIGGER AS $$
+BEGIN 
+IF NOT EXISTS (SELECT * FROM spectator s where s.sno = NEW.sno)
+	THEN RAISE EXCEPTION 'E. Spectator does not exist. Ticket not issued';
+END IF;
+RETURN NEW;
+end $$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER no_spec_trigger BEFORE INSERT on ticket
+FOR EACH row
+execute procedure
+no_spec();
+
+
+
+
+
+
+
+
+

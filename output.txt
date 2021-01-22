@@ -1,0 +1,281 @@
+
+Z. All tables cleared
+
+B. Insert event Successful
+
+B. Insert event Successful
+
+B. Insert event Successful
+
+B. Insert event Successful
+
+B. Insert event Successful
+
+B. Insert event Successful
+
+B. Insert event Successful
+
+B. Insert event Successful
+
+A. Insert spectator successful
+
+A. Insert spectator successful
+
+A. Insert spectator successful
+
+A. Insert spectator successful
+
+A. Insert spectator successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+P.
+2019-04-12, Pool, 0, 
+2019-04-12, Marina, 5, 
+2019-04-12, Arena 2, 3, 
+2019-04-12, Stadium 1, 12, 
+
+Q. 
+100 metres sprint, A100, 5, 
+400 metres sprint, A400, 2, 
+Judo, JUDO, 3, 
+Long Jump, ALJP, 2, 
+Marathon, AMTH, 3, 
+Swimming, SWIM, 0, 
+Wind Surfing, WSRF, 2, 
+Yacht Racing, YCHT, 3, 
+
+R. 
+100 metres sprint, A100, 5, 
+
+S. 
+W.Wang, 2019-04-12, Stadium 1, 16:00:00, 100 metres sprint, 
+W.Wang, 2019-04-12, Stadium 1, 18:00:00, Marathon, 
+W.Wang, 2019-04-12, Stadium 1, 10:00:00, 400 metres sprint, 
+W.Wang, 2019-04-12, Stadium 1, 10:00:00, Long Jump, 
+W.Wang, 2019-04-12, Marina, 09:00:00, Yacht Racing, 
+W.Wang, 2019-04-12, Marina, 12:00:00, Wind Surfing, 
+W.Wang, 2019-04-12, Arena 2, 10:00:00, Judo, 
+
+T. 
+B.Iglesia, A100, active, 
+
+V. 
+
+D. Event deleted
+
+T. 
+B.Iglesia, None, cancelled, 
+
+V. 
+1, A100, 100, 2020-12-15 21:56:20, postgres, 
+2, A100, 200, 2020-12-15 21:56:20, postgres, 
+3, A100, 300, 2020-12-15 21:56:20, postgres, 
+4, A100, 500, 2020-12-15 21:56:20, postgres, 
+20, A100, 400, 2020-12-15 21:56:20, postgres, 
+
+C. Cannot delete spectator with valid tickets
+CONTEXT:  PL/pgSQL function check_for_tickets() line 4 at RAISE
+
+C. Spectator deleted
+
+T. 
+None, None, cancelled, 
+
+E. Event sold out. Ticket not issued
+CONTEXT:  PL/pgSQL function enforce_emax() line 4 at RAISE
+
+E. Spectator does not exist. Ticket not issued
+CONTEXT:  PL/pgSQL function no_spec() line 4 at RAISE
+
+B. ecode already exists. Event not created
+CONTEXT:  PL/pgSQL function dupe_event() line 4 at RAISE
+
+B. Invalid event date. Event not created
+CONTEXT:  PL/pgSQL function event_date() line 4 at RAISE
+
+E. Ticket number already exists. Ticket not issued
+CONTEXT:  PL/pgSQL function ticket_dupe() line 4 at RAISE
+
+E. Spectator does not exist. Ticket not issued
+CONTEXT:  PL/pgSQL function no_spec() line 4 at RAISE
+
+X. Exit
+Z. All tables cleared
+
+B. Insert event Successful
+
+B. Insert event Successful
+
+B. Insert event Successful
+
+B. Insert event Successful
+
+B. Insert event Successful
+
+B. Insert event Successful
+
+B. Insert event Successful
+
+B. Insert event Successful
+
+A. Insert spectator successful
+
+A. Insert spectator successful
+
+A. Insert spectator successful
+
+A. Insert spectator successful
+
+A. Insert spectator successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+E. Issue ticket successful
+
+P.
+2019-04-12, Pool, 0, 
+2019-04-12, Marina, 5, 
+2019-04-12, Arena 2, 3, 
+2019-04-12, Stadium 1, 12, 
+
+Q. 
+100 metres sprint, A100, 5, 
+400 metres sprint, A400, 2, 
+Judo, JUDO, 3, 
+Long Jump, ALJP, 2, 
+Marathon, AMTH, 3, 
+Swimming, SWIM, 0, 
+Wind Surfing, WSRF, 2, 
+Yacht Racing, YCHT, 3, 
+
+R. 
+100 metres sprint, A100, 5, 
+
+S. 
+W.Wang, 2019-04-12, Stadium 1, 16:00:00, 100 metres sprint, 
+W.Wang, 2019-04-12, Stadium 1, 18:00:00, Marathon, 
+W.Wang, 2019-04-12, Stadium 1, 10:00:00, 400 metres sprint, 
+W.Wang, 2019-04-12, Stadium 1, 10:00:00, Long Jump, 
+W.Wang, 2019-04-12, Marina, 09:00:00, Yacht Racing, 
+W.Wang, 2019-04-12, Marina, 12:00:00, Wind Surfing, 
+W.Wang, 2019-04-12, Arena 2, 10:00:00, Judo, 
+
+T. 
+B.Iglesia, A100, active, 
+
+V. 
+
+D. Event deleted
+
+T. 
+B.Iglesia, None, cancelled, 
+
+V. 
+1, A100, 100, 2021-01-21 11:45:54, postgres, 
+2, A100, 200, 2021-01-21 11:45:54, postgres, 
+3, A100, 300, 2021-01-21 11:45:54, postgres, 
+4, A100, 500, 2021-01-21 11:45:54, postgres, 
+20, A100, 400, 2021-01-21 11:45:54, postgres, 
+
+C. Cannot delete spectator with valid tickets
+CONTEXT:  PL/pgSQL function check_for_tickets() line 4 at RAISE
+
+C. Spectator deleted
+
+T. 
+None, None, cancelled, 
+
+E. Event sold out. Ticket not issued
+CONTEXT:  PL/pgSQL function enforce_emax() line 4 at RAISE
+
+E. Spectator does not exist. Ticket not issued
+CONTEXT:  PL/pgSQL function no_spec() line 4 at RAISE
+
+B. ecode already exists. Event not created
+CONTEXT:  PL/pgSQL function dupe_event() line 4 at RAISE
+
+B. Invalid event date. Event not created
+CONTEXT:  PL/pgSQL function event_date() line 4 at RAISE
+
+E. Ticket number already exists. Ticket not issued
+CONTEXT:  PL/pgSQL function ticket_dupe() line 4 at RAISE
+
+E. Spectator does not exist. Ticket not issued
+CONTEXT:  PL/pgSQL function no_spec() line 4 at RAISE
+
+X. Exit

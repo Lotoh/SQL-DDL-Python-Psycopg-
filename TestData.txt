@@ -1,0 +1,111 @@
+INSERT INTO event(ecode, edesc, elocation, edate, etime, emax)
+    VALUES ('A100', '100 meter sprint', 'track 1', '01/04/2019', '09:05:00', 500);
+INSERT INTO event(ecode, edesc, elocation, edate, etime, emax)
+    VALUES ('A200', '200 meter sprint', 'track 1', '01/04/2019', '09:15:00', 500);
+INSERT INTO event(ecode, edesc, elocation, edate, etime, emax)
+    VALUES ('A400', '400 meter race', 'track 1', '01/04/2019', '09:30:00', 500);
+INSERT INTO event(ecode, edesc, elocation, edate, etime, emax)
+    VALUES ('A800', '800 meter race', 'track 1', '02/04/2019', '09:05:00', 500);
+INSERT INTO event(ecode, edesc, elocation, edate, etime, emax)
+    VALUES ('A016', '1600 meter race', 'track 2', '01/04/2019', '10:05:00', 500);
+INSERT INTO event(ecode, edesc, elocation, edate, etime, emax)
+    VALUES ('R800', '800 meter relay', 'track 2', '01/04/2019', '10:05:00', 500);	
+INSERT INTO event(ecode, edesc, elocation, edate, etime, emax)
+    VALUES ('R016', '1600 meter relay', 'track 2', '02/04/2019', '11:00:00', 700);	
+INSERT INTO event(ecode, edesc, elocation, edate, etime, emax)
+    VALUES ('H200', '200 meter hurdles', 'track 3', '02/04/2019', '11:30:00', 700);	
+INSERT INTO event(ecode, edesc, elocation, edate, etime, emax)
+    VALUES ('H400', '400 meter hurdles', 'track 3', '03/04/2019', '09:05:00', 800);	
+INSERT INTO event(ecode, edesc, elocation, edate, etime, emax)
+    VALUES ('LJ01', 'long jump', 'area 2', '03/04/2019', '10:05:00', 800);	
+	
+
+
+
+INSERT INTO spectator(sno, sname, semail)
+    VALUES (0001, 'Fielding, Wallace', 'Wallace@email.com');
+INSERT INTO spectator(sno, sname, semail)
+    VALUES (002, 'Fine, Laurence', 'Laurence@email.com');	
+INSERT INTO spectator(sno, sname, semail)
+    VALUES (0003, 'Bluff, Clarence', 'Clarence@email.com');
+INSERT INTO spectator(sno, sname, semail)
+    VALUES (0004, 'Chung, Arthur', 'Arthur@email.com');
+INSERT INTO spectator(sno, sname, semail)
+    VALUES (0005, 'Smith, Chester', 'Chester@email.com');
+INSERT INTO spectator(sno, sname, semail)
+    VALUES (0006, 'Smith, Peggy', 'Peggy@email.com');
+INSERT INTO spectator(sno, sname, semail)
+    VALUES (0007, 'Alcott, Scott', 'Scott@email.com');
+INSERT INTO spectator(sno, sname, semail)
+    VALUES (0008, 'Walters, Lindsay', 'Lindsay@email.com');
+INSERT INTO spectator(sno, sname, semail)
+    VALUES (0009, 'Lorenzo, Sue', 'Sue@email.com');
+INSERT INTO spectator(sno, sname, semail)
+    VALUES (0010, 'Beringer, Tom', 'Tom@email.com');
+
+
+INSERT INTO ticket(tno, ecode, sno)
+	VALUES (1, 'A100', 0004);
+INSERT INTO ticket(tno, ecode, sno)
+	VALUES (2, 'A200', 0005);
+INSERT INTO ticket(tno, ecode, sno)
+	VALUES (3, 'H400', 0007);
+INSERT INTO ticket(tno, ecode, sno)
+	VALUES (4, 'A100', 0001);
+INSERT INTO ticket(tno, ecode, sno)
+	VALUES (5, 'A200', 0002);	
+INSERT INTO ticket(tno, ecode, sno)
+	VALUES (6, 'R800', 0003);	
+INSERT INTO ticket(tno, ecode, sno)
+	VALUES (7, 'R016', 0004);	
+INSERT INTO ticket(tno, ecode, sno)
+	VALUES (8, 'A400', 0005);	
+INSERT INTO ticket(tno, ecode, sno)
+	VALUES (9, 'LJ01', 0006);		
+INSERT INTO ticket(tno, ecode, sno)
+	VALUES (10, 'A800', 0007);	
+INSERT INTO ticket(tno, ecode, sno)
+	VALUES (11, 'A016', 0008);	
+INSERT INTO ticket(tno, ecode, sno)
+	VALUES (12, 'H200', 0009);	
+INSERT INTO ticket(tno, ecode, sno)
+	VALUES (13, 'H400', 0010);
+INSERT INTO ticket(tno, ecode, sno)
+	VALUES (14, 'A100', 0005);
+INSERT INTO ticket(tno, ecode, sno)
+	VALUES (15, 'A100', 00010);
+INSERT INTO ticket(tno, ecode, sno)
+	VALUES (16, 'A200', 0007);			
+
+INSERT INTO cancel
+	VALUES (6, 'R800', 3);
+INSERT INTO cancel
+	VALUES (1, 'A100', 4);
+INSERT INTO cancel
+	VALUES (8, 'A400', 5);
+
+
+SET search_path TO pirean;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+	

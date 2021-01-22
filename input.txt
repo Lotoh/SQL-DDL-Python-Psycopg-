@@ -1,0 +1,53 @@
+Z
+B A100,100 metres sprint,Stadium 1,2019-04-12,16:00,1000
+B AMTH,Marathon,Stadium 1,2019-04-12,18:00,1000
+B A400,400 metres sprint,Stadium 1,2019-04-12,10:00,1000
+B ALJP,Long Jump,Stadium 1,2019-04-12,10:00,1000
+B YCHT,Yacht Racing,Marina,2019-04-12,09:00,200
+B WSRF,Wind Surfing,Marina,2019-04-12,12:00,200
+B JUDO,Judo,Arena 2,2019-04-12,10:00,3
+B SWIM,Swimming,Pool,2019-04-12,10:00,100
+A 100,J.Chin,j.chin@uea.ac.uk
+A 200,W.Wang,whw@somewhere.net
+A 300,P.Mayhew,pwm@gmail.com
+A 400,B.Iglesia,bli@uea.ac.uk
+A 500,P.Chardaire,pc@uea.ac.uk
+E 1,A100,100
+E 2,A100,200
+E 3,A100,300
+E 4,A100,500
+E 5,ALJP,100
+E 6,ALJP,200
+E 7,AMTH,200
+E 8,AMTH,300
+E 9,AMTH,500
+E 10,A400,200
+E 11,A400,300
+E 12,YCHT,200
+E 13,YCHT,300
+E 14,YCHT,500
+E 15,WSRF,200
+E 16,WSRF,300
+E 17,JUDO,100
+E 18,JUDO,300
+E 19,JUDO,200
+E 20,A100,400
+P
+Q
+R A100
+S 200
+T 20
+V A100
+D A100
+T 20
+V A100
+C 300
+C 400
+T 20
+E 21,JUDO,500
+E 21,JUDO,400
+B A400,400 metres sprint,Stadium 1,2019-04-12,10:00,1000
+B A900,900 metres sprint,Stadium 1,2010-04-01,14:00,1000
+E 3,AXXX,100
+E 101,A400,900
+X
