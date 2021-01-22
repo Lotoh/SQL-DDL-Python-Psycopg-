@@ -1,5 +1,5 @@
-CREATE SCHEMA pirean;
-SET search_path TO pirean,PUBLIC;
+CREATE SCHEMA events;
+SET search_path TO events,PUBLIC;
 
 CREATE TABLE event (
     ecode        CHAR(4) UNIQUE PRIMARY KEY,
@@ -139,7 +139,7 @@ ticket_dupe();
 
 
 
---------VVV---No spectator on insert ticket---VVV--------------
+--------VVV---No valid spectator for insert ticket---VVV--------------
 
 CREATE OR REPLACE FUNCTION no_spec()
 RETURNS TRIGGER AS $$
