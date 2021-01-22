@@ -85,7 +85,7 @@ INSERT INTO cancel
 	VALUES (8, 'A400', 5);
 
 
-SET search_path TO pirean;
+SET search_path TO events;
 	
 	
 	
